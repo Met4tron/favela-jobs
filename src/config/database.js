@@ -3,7 +3,7 @@ const config = require('./config');
 
 mongoose.Promise = global.Promise;
 
-const connectToDb = async () => {
+exports.connect = async () => {
     try {
         await mongoose.connect(config.DB.HOST, { useMongoClient: true }); 
     }
@@ -12,4 +12,10 @@ const connectToDb = async () => {
     }
 }
 
-module.exports = connectToDb;
+mongoose.connection.on("error", function(err) {
+  console.error('Failed to connect to DB ' + config.DB.HOST + ' on startup ', err);
+});
+
+mongoose.connection.on("connected", function(ref) {
+  console.log("Connected to " + config.DB.HOST + " DB!");
+});

@@ -1,0 +1,43 @@
+'use strict';
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+var mongoose = require('mongoose');
+var config = require('./config');
+
+mongoose.Promise = global.Promise;
+
+exports.connect = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+        while (1) {
+            switch (_context.prev = _context.next) {
+                case 0:
+                    _context.prev = 0;
+                    _context.next = 3;
+                    return mongoose.connect(config.DB.HOST, { useMongoClient: true });
+
+                case 3:
+                    _context.next = 8;
+                    break;
+
+                case 5:
+                    _context.prev = 5;
+                    _context.t0 = _context['catch'](0);
+
+                    console.log(_context.t0);
+
+                case 8:
+                case 'end':
+                    return _context.stop();
+            }
+        }
+    }, _callee, undefined, [[0, 5]]);
+}));
+
+mongoose.connection.on("error", function (err) {
+    console.error('Failed to connect to DB ' + config.DB.HOST + ' on startup ', err);
+});
+
+mongoose.connection.on("connected", function (ref) {
+    console.log("Connected to " + config.DB.HOST + " DB!");
+});
