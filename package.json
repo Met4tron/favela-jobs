@@ -6,7 +6,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "watch:dev": "nodemon ./src/server",
+    "watch:dev": "NODE_ENV=development nodemon ./src/server",
     "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files"
   },
   "dependencies": {
@@ -16,16 +16,25 @@
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "helmet": "^3.12.1",
+    "jsonwebtoken": "^8.2.1",
     "mongoose": "^5.1.1",
-    "morgan": "^1.9.0"
+    "morgan": "^1.9.0",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-0": "^6.24.1",
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.0",
+    "mocha": "^5.1.1",
+    "nyc": "^11.8.0",
     "prettier": "^1.12.1",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.2",
+    "supertest": "^3.1.0"
   }
 }

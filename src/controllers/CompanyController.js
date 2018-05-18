@@ -1,5 +1,4 @@
-const { model } = require('mongoose');
-const Company = model('Company');
+const Company = require('../models/Company');
 
 exports.getCompanyById = async () => {
 

@@ -1,18 +1,18 @@
 const mongoose = require('mongoose');
-const Candidate = mongoose.model('Candidate');
+const Candidate = require('../models/Candidate');
 
-exports.getCandidateById = async () => {
-
-}
-
-exports.updateCandidate = async () => {
+exports.getCandidateById = async (req, res) => {
 
 }
 
-exports.deleteCandidate = async () => {
+exports.updateCandidate = async (req, res) => {
 
 }
 
-exports.getOpportunities = async () => {
-  
+exports.deleteCandidate = async (req, res) => {
+
+}
+
+exports.getOpportunities = async (req, res) => {
+
 }

@@ -1,7 +1,15 @@
-const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
 
-const OpportunityModel = new Schema({
-
+const OpportunityModel = new mongoose.Schema({
+  title: {
+    type: String
+  },
+  date: {
+    type: Date
+  },
+  description: {
+    type: String
+  }
 })
 
-module.exports = model('Opportunity', OpportunityModel);
+module.exports = mongoose.model('Opportunity', OpportunityModel);
